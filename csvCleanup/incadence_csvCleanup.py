@@ -63,9 +63,9 @@ with open(csvFile, 'rb') as mycsv:
     loc    = re.sub("<.+>(.+)<.+>",r'\1',loc)
     title  = re.sub("<.+>(.+)<.+>",r'\1',title)
     appUrl = req
-    job_category = category(title)
+    job_category = category(title,title)
     if re.match('Other', job_category):
-      job_category = category(desc)
+      job_category = category(desc,title)
     if re.match('location', loc):
       LOG.write("Skipping header field")
     elif re.match('^$', loc):
